@@ -4,16 +4,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LocalstackMonitor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:LocalstackMonitor.Models"
     mc:Ignorable="d">
 
     <Page>
+        <Page.Resources>
+            <DataTemplate x:Key="SNSTopicListViewTemplate" x:DataType="models:SNSTopic">
+                <TextBlock Text="{x:Bind Name}" x:Phase="1" Margin="0,5,0,5"/>
+            </DataTemplate>
+        </Page.Resources>
         <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
                IsPaneOpen="True" OpenPaneLength="256" CompactPaneLength="48" DisplayMode="Inline">
             <SplitView.Pane>
-                <Grid>
+                <ListView
+                    x:Name="BaseExample"
+                    ItemTemplate="{StaticResource SNSTopicListViewTemplate}"
+                    BorderThickness="1"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"
+                    Width="350"
+                    Height="400"
+                    HorizontalAlignment="Left"/>
 
-                </Grid>
             </SplitView.Pane>
             <Grid>
 
